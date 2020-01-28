@@ -8,7 +8,7 @@ class Allergy(models.Model):
 class Prescription(models.Model):
     prescription = models.CharField(blank=False, max_length=30)
     pass
-
+    
 # class Contraindication(models.Model):
 #     prescription = models.ForeignKey(Prescription)
 #     allergy = models.ForeignKey(Allergy)

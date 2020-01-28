@@ -50,6 +50,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# SESSION_ENGINE = [
+#     "django.contrib.sessions.backends.signed_cookies"
+# ]
+
 ROOT_URLCONF = 'web_project.urls'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')

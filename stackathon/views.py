@@ -18,17 +18,9 @@ class HomeUserView(ListView):
 
     def get_context_data(self, **kwargs):
         print('kwargs are: ', kwargs)
+        print('all my users', User.objects.all())
         context = super(HomeUserView, self).get_context_data(**kwargs)
         return context
-
-def hello_there(request, user_id):
-    return render(
-        request,
-        'stackathon/hello_there.html',
-        {
-            'user_id': user_id
-        }
-    )
 
 def login(request):
     return render(request, 'stackathon/login.html')
@@ -49,14 +41,17 @@ def contraindications(request):
     return render(request, 'stackathon/contraindications.html')
 
 def create_account(request):
+    print('request.post: ', request.POST)
     form = UserForm(request.POST or None)
     print('the create account form sent: ', form)
     
     if request.method == "POST":
         if form.is_valid():
-            user = form.save(commit=False)
-            print('user is: ', user)
+            user = form.save()
+            print('user is: ', request)
             user.save()
+            # request.session['id'] = request.POST.id
+            print('session is: ', request.session)
             return redirect("home")
 
     else:
